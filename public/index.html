@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passport Photo Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Passport Photo Generator</h1>
+      <p class="subtitle">Upload, crop, preview, and export print-ready passport photos (300 DPI).</p>
+
+      <section class="card auth-card">
+        <div class="auth-header">
+          <h2>Account</h2>
+          <span id="authStatus">Not logged in</span>
+        </div>
+        <form id="authForm" class="auth-form">
+          <input id="email" type="email" placeholder="Email" required />
+          <input id="password" type="password" placeholder="Password (min 6 chars)" required minlength="6" />
+          <div class="row">
+            <button type="button" id="signupBtn">Sign Up</button>
+            <button type="button" id="loginBtn">Log In</button>
+            <button type="button" id="logoutBtn" class="hidden">Log Out</button>
+          </div>
+        </form>
+        <small>Logged in users can save generated photos. Guests can still download PDF.</small>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Editor</h2>
+          <div class="controls">
+            <label for="fileInput">Upload Photo (JPG/PNG)</label>
+            <input id="fileInput" type="file" accept="image/jpeg,image/png" />
+
+            <label for="countrySelect">Passport Size</label>
+            <select id="countrySelect"></select>
+
+            <label for="zoomRange">Zoom</label>
+            <input id="zoomRange" type="range" min="0.5" max="3" value="1" step="0.01" />
+            <small id="sizeLabel"></small>
+          </div>
+
+          <div id="cropBox" class="crop-box">
+            <canvas id="editorCanvas" width="420" height="420"></canvas>
+          </div>
+          <p class="hint">Drag image inside the frame to reposition.</p>
+        </div>
+
+        <div class="card">
+          <h2>Live Preview</h2>
+          <canvas id="previewCanvas" width="300" height="300"></canvas>
+          <div class="actions">
+            <button id="downloadPdfBtn">Download A4 PDF</button>
+            <button id="saveBtn" class="hidden">Save to Account</button>
+          </div>
+
+          <h3>Saved Photos</h3>
+          <div id="savedList" class="saved-list">Log in to view saved photos.</div>
+        </div>
+      </section>
+
+      <p id="message" class="message"></p>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

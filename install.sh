@@ -19,7 +19,7 @@ cd "$APP_DIR"
 npm install
 
 cat > .env <<ENV
-PORT=8000
+PORT=3000
 SESSION_SECRET=$(openssl rand -hex 32)
 ENV
 
@@ -30,4 +30,4 @@ else
   nohup npm start >/var/log/passport-photo-generator.log 2>&1 &
 fi
 
-echo "App installed and running. Visit http://<your-vps-ip>:8000"
+echo "App installed and running. Visit http://<your-vps-ip>:3000"

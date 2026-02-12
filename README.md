@@ -21,7 +21,7 @@ npm install
 npm start
 ```
 
-Open: `http://localhost:8000`
+Open: `http://localhost:3000`
 
 ## Stack
 - Node.js + Express

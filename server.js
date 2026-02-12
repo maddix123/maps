@@ -10,7 +10,6 @@ const DB_PATH = path.join(__dirname, 'data', 'app.db');
 
 const db = new Database(DB_PATH);
 db.pragma('journal_mode = WAL');
-
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
